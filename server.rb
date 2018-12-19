@@ -1,7 +1,7 @@
 require 'sinatra'
 require 'sinatra/reloader'
 
-
+# ruby server.rb -o 0.0.0.0 -p 3000
 get "/" do
   erb :index, :layout => :primary_layout
 end
