@@ -30,6 +30,17 @@ post "/" do
   end
 end
 
-get "/login" do
-  erb :login
+post "/" do
+copy_user = User.find_by(username: params["username"])
+    if copy_user
+        redirect "/"
+    else
+        user = User.create(first_name: params["first_name"], last_name: params["last_name"], birth_date: params["birth_date"], username: params["username"], password: params["password"], email: params["email"])
+        session[:user_id] = user.id
+        redirect '/'
+    end
+end
+get "/logout" do
+  session[:user_id] = nil
+  redirect '/'
 end
