@@ -30,7 +30,7 @@ post "/" do
   end
 end
 
-post "/" do
+post "/signup" do
 copy_user = User.find_by(username: params["username"])
     if copy_user
         redirect "/"

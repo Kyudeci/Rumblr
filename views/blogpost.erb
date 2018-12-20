@@ -1,7 +1,15 @@
-<% if @user %>
-  Welcome, <%= @user.username %>
-<% end %>
+<div class="dropdown">
+  <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    <% if @user %>
+    Welcome, <%= @user.username %>
+    <% end %>
+  </a>
+
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+    <a class="dropdown-item" href="logout">Logout</a>
+    <a class="dropdown-item" href="#">Another action</a>
+    <a class="dropdown-item" href="#">Something else here</a>
+  </div>
+</div>
+
 <p>Post will go here...</p>
-<ul>
-    <li><a href="logout">Boop</a></li>
-</ul>
