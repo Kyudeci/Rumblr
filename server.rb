@@ -4,6 +4,7 @@ require 'sinatra/reloader'
 require 'sqlite3'
 require 'active_record'
 require './models/user.rb'
+require './models/posts.rb'
 
 enable :sessions
 ActiveRecord::Base.establish_connection(
@@ -16,6 +17,7 @@ get "/" do
 end
 # Instead of creating a seperate page, create a modal?.
 get "/blog" do
+  @posts = Posts.all
   @user = User.find(session[:user_id])
   erb :blogpost, :layout => :blog_layout
 end
@@ -44,6 +46,7 @@ get "/logout" do
   session[:user_id] = nil
   redirect '/'
 end
-# post "/blog" do
-
-# end
+post "/blog" do
+  Posts.create(user: params[session[:user_id]], user_post: params[session[:user_post]])
+  redirect "/blog"
+end

@@ -6,7 +6,7 @@ require 'active_record'
 require 'pry'
 # require '.models/x.rb'
 require './models/user.rb'
-
+require './models/posts.rb'
 # Connect to a sqlite3 database
 # If you feel like you need to reset it, simply delete the file sqlite makes
 ActiveRecord::Base.establish_connection(
