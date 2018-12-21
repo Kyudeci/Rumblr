@@ -1,7 +1,7 @@
 <div class="dropdown">
   <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
     <% if @user %>
-    Welcome, <%= @user.username %>
+        Welcome, <%= @user.username %>
     <% end %>
   </a>
 
@@ -13,3 +13,9 @@
 </div>
 
 <p>Post will go here...</p>
+<form action="/blog" id="usrform" method="POST">
+  <textarea style="resize:none" rows="4" cols="50" name="blog_post" form="usrform">Enter text here...</textarea> <br>
+  <input type="submit">
+</form>
+
+# Write logic that places added blog post here and allows for them to persist even on logout.
