@@ -47,6 +47,7 @@ get "/logout" do
   redirect '/'
 end
 post "/blog" do
-  Posts.create(user: params[session[:user_id]], user_post: params[session[:user_post]])
+  @user = User.find(session[:user_id])
+  @userPost = Posts.create(user: params["username"], user_post: params["user_post"])
   redirect "/blog"
 end
