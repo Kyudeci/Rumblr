@@ -51,3 +51,7 @@ post "/blog" do
   @userPost = Posts.create(user: params["username"], user_post: params["user_post"])
   redirect "/blog"
 end
+get "/profile" do
+ @user = User.find(session[:user_id])
+  erb :profile, :layout => :blog_layout
+end
