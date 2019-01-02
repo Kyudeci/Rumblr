@@ -52,6 +52,14 @@ post "/blog" do
   redirect "/blog"
 end
 get "/profile" do
- @user = User.find(session[:user_id])
+  @user = User.find(session[:user_id])
+  @users = User.all
+  @posts = Posts.all
   erb :profile, :layout => :blog_layout
+end
+get "/profile/delete/:id" do
+  @user = User.find(session[:user_id])
+  Posts.find_by(username: @user.username).destroy
+  User.find(params["id"]).destroy
+  redirect "/"
 end

@@ -7,13 +7,23 @@
 
   <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
     <a class="dropdown-item" href="blog">Main</a>
-    <a class="dropdown-item" href="profile">Profile</a>
     <a class="dropdown-item" href="logout">Logout</a>
+    <a class="dropdown-item" href="/profile/delete/<%= @user.id %>">Delete Account</a>
   </div>
 </div>
 
 <h1>
 <% if @user %>
-        Welcome, <%= @user.username %>
+  Welcome, <%= @user.username %>!
 <% end %>
 </h1>
+<% @posts.each do |posts| %>
+<div class="card w-75 border-dark mb-3">
+  <div class="card-header"><%= posts.username %></div>
+  <div class="card-body text-dark">
+    <h5 class="card-title"><%= posts.title %></h5>
+    <p class="card-text"><%= posts.user_post %></p>
+  </div>
+  </div>
+</div>
+<% end %>
