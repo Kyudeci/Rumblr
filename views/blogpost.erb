@@ -11,16 +11,20 @@
     <a class="dropdown-item" href="logout">Logout</a>
   </div>
 </div>
-
 <p>Post will go here...</p>
 <form action="/blog" id="usrform" method="POST">
+  <input type="text" name="title" placeholder="Post Title"><br>
   <textarea required style="resize:none" rows="4" cols="50" name="user_post" form="usrform" placeholder="Make a post..."></textarea> <br>
   <input type="submit">
 </form>
 
 <% @posts.each do |posts| %>
-    <div>
-        <h3><%= posts.user  %></h3>
-        <p><%= posts.user_post %></p>
-    </div>
+<div class="card w-75 border-dark mb-3">
+  <div class="card-header"><%= posts.username %></div>
+  <div class="card-body text-dark">
+    <h5 class="card-title"></h5>
+    <p class="card-text"><%= posts.user_post %></p>
+  </div>
+  </div>
+</div>
 <% end %>

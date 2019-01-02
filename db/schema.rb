@@ -14,7 +14,7 @@ ActiveRecord::Schema.define(version: 2) do
 
   create_table "posts", force: :cascade do |t|
     t.integer "user_id"
-    t.string "user"
+    t.string "username"
     t.string "user_post"
     t.index ["user_id"], name: "index_posts_on_user_id"
   end
