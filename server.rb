@@ -1,15 +1,16 @@
 require 'sinatra'
 require 'sinatra/reloader'
 
-require 'sqlite3'
 require 'active_record'
 require './models/user.rb'
 require './models/posts.rb'
 
 enable :sessions
 if ENV['DATABASE_URL']
+  require 'pg'
   ActiveRecord::Base.establish_connection(ENV['DATABASE_URL'])
 else
+  require 'sqlite3'
   ActiveRecord::Base.establish_connection(
     adapter: 'sqlite3',
     database: 'db/user.db'
