@@ -22,7 +22,7 @@ get "/" do
 end
 # Instead of creating a seperate page, create a modal?.
 get "/blog" do
-  @posts = Posts.all
+  @posts = Post.all
   @user = User.find(session[:user_id])
   erb :blogpost, :layout => :blog_layout
 end
@@ -53,18 +53,18 @@ get "/logout" do
 end
 post "/blog" do
   @user = User.find(session[:user_id])
-  @userPost = Posts.create(user_id: session[:user_id], username: @user.username, user_post: params["user_post"], title: params[:title])
+  @userPost = Post.create(user_id: session[:user_id], username: @user.username, user_post: params["user_post"], title: params[:title])
   redirect "/blog"
 end
 get "/profile" do
   @user = User.find(session[:user_id])
   @users = User.all
-  @posts = Posts.all
+  @posts = Post.all
   erb :profile, :layout => :blog_layout
 end
 get "/profile/delete/:id" do
   @user = User.find(session[:user_id])
-  Posts.find_by(username: @user.username).destroy
+  Post.find_by(username: @user.username).destroy
   User.find(params["id"]).destroy
   redirect "/"
 end

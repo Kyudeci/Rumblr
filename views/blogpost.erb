@@ -5,26 +5,40 @@
     <% end %>
   </a>
 
-  <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+  <div class="dropdown-menu right" aria-labelledby="dropdownMenuLink">
     <a class="dropdown-item" href="profile">Profile</a>
     <a class="dropdown-item" href="#">Something else here</a>
     <a class="dropdown-item" href="logout">Logout</a>
   </div>
 </div>
-<p>Post will go here...</p>
-<form action="/blog" id="usrform" method="POST">
-  <input type="text" name="title" placeholder="Post Title"><br>
-  <textarea required style="resize:none" rows="4" cols="50" name="user_post" form="usrform" placeholder="Make a post..."></textarea> <br>
-  <input type="submit">
-</form>
+  <br>
+  <div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
+        <p>Post will go here...</p>
+        <form action="/blog" id="usrform" method="POST">
+          <input class="form-control" name="title" type="text" placeholder="Post Title">
+          <div class="form-group">
+            <textarea required class="form-control" id="exampleFormControlTextarea1" name="user_post" rows="3" placeholder="Make a post..."></textarea>
+          </div>
+          <input type="submit">
+        </form>
+    </div>
+    <div class="col-md-3"></div>
+  </div>
 
-<% @posts.reverse.each do |posts| %>
-<div class="card w-75 border-dark mb-3">
-  <div class="card-header"><%= posts.username %></div>
-  <div class="card-body text-dark">
-    <h5 class="card-title"><%= posts.title %></h5>
-    <p class="card-text"><%= posts.user_post %></p>
+<div class="row">
+  <div class="col-md-3"></div>
+  <div class="col-md-6">
+    <% @posts.reverse.each do |posts| %>
+      <div class="card border-dark mb-3">
+        <div class="card-header"><%= posts.username %></div>
+        <div class="card-body text-dark">
+          <h5 class="card-title"><%= posts.title %></h5>
+          <p class="card-text"><%= posts.user_post %></p>
+        </div>
+      </div>
+    <% end %>
   </div>
-  </div>
+  <div class="col-md-3"></div>
 </div>
-<% end %>

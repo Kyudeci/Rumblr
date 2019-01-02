@@ -12,18 +12,23 @@
   </div>
 </div>
 
-<h1>
+<h1 style="text-align:center">
 <% if @user %>
   Welcome, <%= @user.username %>!
 <% end %>
 </h1>
-<% @posts.reverse.each do |posts| %>
-<div class="card w-75 border-dark mb-3">
+<div class="row">
+  <div class="col-md-3"></div>
+  <div class="col-md-6">
+<% @user.posts.each do |posts| %>
+<div class="card border-dark mb-3">
   <div class="card-header"><%= posts.username %></div>
   <div class="card-body text-dark">
     <h5 class="card-title"><%= posts.title %></h5>
     <p class="card-text"><%= posts.user_post %></p>
   </div>
   </div>
-</div>
 <% end %>
+  </div>
+  <div class="col-md-3"></div>
+</div>
