@@ -18,7 +18,7 @@
   <input type="submit">
 </form>
 
-<% @posts.each do |posts| %>
+<% @posts.reverse.each do |posts| %>
 <div class="card w-75 border-dark mb-3">
   <div class="card-header"><%= posts.username %></div>
   <div class="card-body text-dark">
